@@ -64,6 +64,56 @@ export interface Transaction {
   note?: string;
 }
 
+export type SubmissionType = 'microjob' | 'fb_server' | 'gmail_sell' | 'insta_sell' | 'deposit' | 'withdraw';
+export type SubmissionStatus = 'pending' | 'approved' | 'rejected';
+
+export interface AdminSubmission {
+  id: string;
+  userId: string;
+  userName: string;
+  userPhone?: string;
+  type: SubmissionType;
+  title: string;
+  reward: number;
+  targetWallet: WalletType;
+  submittedAt: string;
+  status: SubmissionStatus;
+  rejectionReason?: string;
+  data: {
+    taskId?: string;
+    taskTitle?: string;
+    username?: string;
+    proofLink?: string;
+    screenshotUrl?: string;
+    note?: string;
+    serverNumber?: 1 | 2;
+    uid?: string;
+    password?: string;
+    twoFactor?: string;
+    twoFactorKey?: string;
+    accountMail?: string;
+    mailToken?: string;
+    email?: string;
+    recoveryMail?: string;
+    creationYear?: string | number;
+    gmailPassword?: string;
+    instaUsername?: string;
+    instaPassword?: string;
+    postsCount?: string | number;
+    followersCount?: string | number;
+    hasProfilePic?: boolean;
+    fbFriends?: string | number;
+    device?: string;
+    method?: string;
+    trxId?: string;
+    senderNumber?: string;
+    withdrawMethod?: string;
+    accountNumber?: string;
+    sourceWallet?: WalletType;
+    [key: string]: any;
+  };
+}
+
 export interface NotificationItem {
   id: string;
   title: string;

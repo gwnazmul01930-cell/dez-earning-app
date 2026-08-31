@@ -1,4 +1,4 @@
-import { UserProfile, WalletBalances, TaskItem, Transaction, NotificationItem, NoticeBanner, LeaderboardUser } from '../types';
+import { UserProfile, WalletBalances, TaskItem, Transaction, NotificationItem, NoticeBanner, LeaderboardUser, AdminSubmission } from '../types';
 
 export const INITIAL_USER: UserProfile = {
   id: 'DEZ-889021',
@@ -325,3 +325,73 @@ export const DEPOSIT_ACCOUNTS = {
     instruction: 'Rocket অ্যাকাউন্ট থেকে Send Money করে ফিরতি মেসেজের ট্রানজেকশন আইডি প্রদান করুন।'
   }
 };
+
+export const INITIAL_SUBMISSIONS: AdminSubmission[] = [
+  {
+    id: 'sub-init-1',
+    userId: 'DEZ-889021',
+    userName: 'Md. Nazmul Hossain',
+    type: 'fb_server',
+    title: 'FB Server 2 (ID Sell)',
+    reward: 16.00,
+    targetWallet: 'fb',
+    submittedAt: 'Today, 02:40 PM',
+    status: 'pending',
+    data: {
+      serverNumber: 2,
+      uid: '100084938291032',
+      password: 'Pass@User2026',
+      twoFactorKey: 'JBSWY3DPEHPK3PXP',
+    }
+  },
+  {
+    id: 'sub-init-2',
+    userId: 'DEZ-889021',
+    userName: 'Md. Nazmul Hossain',
+    type: 'gmail_sell',
+    title: 'Gmail Sell Submission',
+    reward: 20.00,
+    targetWallet: 'mail',
+    submittedAt: 'Today, 11:20 AM',
+    status: 'pending',
+    data: {
+      email: 'workdez.user89@gmail.com',
+      gmailPassword: 'Digital28'
+    }
+  },
+  {
+    id: 'sub-init-3',
+    userId: 'DEZ-889021',
+    userName: 'Md. Nazmul Hossain',
+    type: 'microjob',
+    title: 'YouTube Channel Subscribe & Watch',
+    reward: 6.00,
+    targetWallet: 'main',
+    submittedAt: 'Today, 01:15 PM',
+    status: 'pending',
+    data: {
+      taskId: 't-yt-1',
+      taskTitle: 'YouTube Channel Subscribe & Watch',
+      username: '@NazmulBDChannel',
+      proofLink: 'https://youtube.com/@NazmulBDChannel',
+      note: 'চ্যানেল সাবস্ক্রাইব করে ৩ মিনিট ভিডিও দেখেছি।'
+    }
+  },
+  {
+    id: 'sub-init-4',
+    userId: 'DEZ-889021',
+    userName: 'Md. Nazmul Hossain',
+    type: 'deposit',
+    title: 'Deposit via bKash',
+    reward: 100.00,
+    targetWallet: 'main',
+    submittedAt: 'Yesterday, 05:30 PM',
+    status: 'approved',
+    data: {
+      method: 'bKash',
+      trxId: 'BK994827104X',
+      senderNumber: '01889988776'
+    }
+  }
+];
+

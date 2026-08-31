@@ -3,21 +3,17 @@ import {
   Wallet,
   Plus,
   ArrowUpRight,
-  RefreshCw,
   Facebook,
   Mail,
   Instagram,
-  ArrowRightLeft
 } from 'lucide-react';
-import { UserProfile, WalletBalances, WalletType } from '../types';
+import { UserProfile, WalletBalances } from '../types';
 
 interface BalanceOverviewProps {
   user: UserProfile;
   balances: WalletBalances;
   onOpenDeposit: () => void;
   onOpenWithdraw: () => void;
-  onOpenTransfer: () => void;
-  onSelectWallet: (wallet: WalletType) => void;
 }
 
 export const BalanceOverview: React.FC<BalanceOverviewProps> = ({
@@ -25,11 +21,9 @@ export const BalanceOverview: React.FC<BalanceOverviewProps> = ({
   balances,
   onOpenDeposit,
   onOpenWithdraw,
-  onOpenTransfer,
-  onSelectWallet,
 }) => {
   return (
-    <div className="space-y-4">
+    <div className="space-y-3.5">
       {/* GREETING SECTION */}
       <section className="flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -61,46 +55,31 @@ export const BalanceOverview: React.FC<BalanceOverviewProps> = ({
             </h1>
           </div>
         </div>
-
-        {/* TRANSFER ACTION PILL */}
-        <button
-          onClick={onOpenTransfer}
-          title="ওয়ালেট থেকে মেইন ব্যালেন্সে ট্রান্সফার"
-          className="press flex items-center gap-1.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 border border-indigo-100 px-3 py-2 text-xs font-bold text-indigo-700 transition-colors"
-        >
-          <ArrowRightLeft className="h-3.5 w-3.5" />
-          <span>কনভার্ট / ট্রান্সফার</span>
-        </button>
       </section>
 
       {/* MAIN BALANCE CARD */}
       <section className="main-gradient relative overflow-hidden rounded-3xl p-5 text-white shadow-xl">
         {/* Decorative background shapes */}
-        <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-white/10 blur-xs" />
-        <div className="absolute -bottom-16 right-16 h-36 w-36 rounded-full bg-white/5 blur-xs" />
+        <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-white/10 blur-xs pointer-events-none" />
+        <div className="absolute -bottom-16 right-16 h-36 w-36 rounded-full bg-white/5 blur-xs pointer-events-none" />
 
         <div className="relative z-10">
           <div className="flex items-start justify-between">
             <div>
-              <div className="flex items-center gap-2">
-                <p className="text-[11px] font-extrabold tracking-[0.16em] text-blue-100 uppercase">
-                  MAIN BALANCE (মেইন ব্যালেন্স)
-                </p>
-                <span className="rounded-full bg-emerald-400/20 text-emerald-200 text-[10px] font-bold px-2 py-0.5 border border-emerald-400/30">
-                  Ready to Cashout
-                </span>
-              </div>
+              <p className="text-[11px] font-bold tracking-wider text-blue-100 uppercase">
+                মেইন ব্যালেন্স (Main Balance)
+              </p>
 
               <div
                 id="mainBalance"
-                className="mt-1.5 text-3xl sm:text-4xl font-black tracking-tight flex items-baseline gap-1"
+                className="mt-1 text-3xl sm:text-4xl font-black tracking-tight flex items-baseline gap-1.5"
               >
                 <span>৳{balances.main.toFixed(2)}</span>
                 <span className="text-xs font-semibold text-blue-200 uppercase tracking-widest">BDT</span>
               </div>
             </div>
 
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-md border border-white/20 shadow-inner">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-md border border-white/20 shadow-inner shrink-0">
               <Wallet className="h-6 w-6 text-white" />
             </div>
           </div>
@@ -128,15 +107,14 @@ export const BalanceOverview: React.FC<BalanceOverviewProps> = ({
         </div>
       </section>
 
-      {/* THREE DEDICATED WALLETS */}
+      {/* THREE DEDICATED WALLETS - PURELY DISPLAY/DECORATIVE CARDS (NON-CLICKABLE) */}
       <section className="grid grid-cols-3 gap-2.5">
         {/* FB WALLET */}
-        <button
-          onClick={() => onSelectWallet('fb')}
-          className="press soft-card rounded-2xl bg-white p-3 text-left hover:border-blue-200 transition-all group"
-        >
-          <div className="mb-2.5 flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors shadow-xs">
-            <Facebook className="h-4 w-4 fill-current" />
+        <div className="soft-card select-none rounded-2xl bg-white p-3 text-left border border-slate-100 shadow-xs relative overflow-hidden">
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-50 text-blue-600 shadow-xs">
+              <Facebook className="h-4 w-4 fill-current" />
+            </div>
           </div>
 
           <p className="text-sm font-extrabold text-slate-800 tracking-tight">
@@ -146,15 +124,14 @@ export const BalanceOverview: React.FC<BalanceOverviewProps> = ({
           <p className="mt-0.5 text-[9px] font-bold tracking-wider text-slate-400 uppercase">
             FB WALLET
           </p>
-        </button>
+        </div>
 
-        {/* MAIL WALLET */}
-        <button
-          onClick={() => onSelectWallet('mail')}
-          className="press soft-card rounded-2xl bg-white p-3 text-left hover:border-red-200 transition-all group"
-        >
-          <div className="google-gradient mb-2.5 flex h-9 w-9 items-center justify-center rounded-xl text-white shadow-xs">
-            <Mail className="h-4 w-4" />
+        {/* GMAIL WALLET */}
+        <div className="soft-card select-none rounded-2xl bg-white p-3 text-left border border-slate-100 shadow-xs relative overflow-hidden">
+          <div className="flex items-center justify-between mb-2">
+            <div className="google-gradient flex h-8 w-8 items-center justify-center rounded-xl text-white shadow-xs">
+              <Mail className="h-4 w-4" />
+            </div>
           </div>
 
           <p className="text-sm font-extrabold text-slate-800 tracking-tight">
@@ -162,17 +139,16 @@ export const BalanceOverview: React.FC<BalanceOverviewProps> = ({
           </p>
 
           <p className="mt-0.5 text-[9px] font-bold tracking-wider text-slate-400 uppercase">
-            MAIL WALLET
+            GMAIL WALLET
           </p>
-        </button>
+        </div>
 
         {/* INSTA WALLET */}
-        <button
-          onClick={() => onSelectWallet('insta')}
-          className="press soft-card rounded-2xl bg-white p-3 text-left hover:border-pink-200 transition-all group"
-        >
-          <div className="instagram-gradient mb-2.5 flex h-9 w-9 items-center justify-center rounded-xl text-white shadow-xs">
-            <Instagram className="h-4 w-4" />
+        <div className="soft-card select-none rounded-2xl bg-white p-3 text-left border border-slate-100 shadow-xs relative overflow-hidden">
+          <div className="flex items-center justify-between mb-2">
+            <div className="instagram-gradient flex h-8 w-8 items-center justify-center rounded-xl text-white shadow-xs">
+              <Instagram className="h-4 w-4" />
+            </div>
           </div>
 
           <p className="text-sm font-extrabold text-slate-800 tracking-tight">
@@ -182,7 +158,7 @@ export const BalanceOverview: React.FC<BalanceOverviewProps> = ({
           <p className="mt-0.5 text-[9px] font-bold tracking-wider text-slate-400 uppercase">
             INSTA WALLET
           </p>
-        </button>
+        </div>
       </section>
     </div>
   );
