@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', 'Hind Siliguri', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    background-color: #f8fafc;
+    color: #0f172a;
+    overscroll-behavior-y: none;
+  }
+}
+
+.brand-gradient {
+  background: linear-gradient(135deg, #2563eb 0%, #06b6d4 50%, #22c55e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.main-gradient {
+  background: linear-gradient(115deg, #2563eb 0%, #4f46e5 55%, #6366f1 100%);
+}
+
+.instagram-gradient {
+  background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+}
+
+.google-gradient {
+  background: linear-gradient(135deg, #4285f4, #34a853, #fbbc05, #ea4335);
+}
+
+.bkash-gradient {
+  background: linear-gradient(135deg, #e2136e 0%, #b30f57 100%);
+}
+
+.nagad-gradient {
+  background: linear-gradient(135deg, #f7941d 0%, #ed1c24 100%);
+}
+
+.soft-card {
+  border: 1px solid #eef2f7;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.045);
+}
+
+.soft-card-hover {
+  transition: all 0.2s ease;
+}
+.soft-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+}
+
+.press {
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+
+.press:active {
+  transform: scale(0.96);
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.03); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2.5s infinite ease-in-out;
+}

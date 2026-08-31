@@ -1,0 +1,7 @@
+{
+  "name": "DEZ — Digital Earning Zone",
+  "description": "DEZ (Digital Earning Zone) - Social tasks, micro-earnings, multi-wallet system, and instant withdrawal platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
